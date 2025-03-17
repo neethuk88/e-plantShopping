@@ -258,6 +258,11 @@ function ProductList({ onHomeClick }) {
         setShowCart(false);
     };
 
+    const cartItems = useSelector((state) => state.cart.items);
+    
+    // Calculate total number of products in cart
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
         setAddedToCart((prevState) => ({
